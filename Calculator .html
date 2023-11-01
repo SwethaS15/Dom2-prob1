@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing:content-box
+        }
+
+        #one {
+            width: 100%;
+            height: 645px;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+        #one>p {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bolder;
+            font-style: italic;
+            color: #070A52
+        }
+
+        #one>#two {
+            width: 383px;
+            height: 480px;
+            box-shadow: 0 3px 10px black;
+            border-radius: 20px;
+            padding-top: 50px;
+            margin: auto;
+            margin-top: 22px;
+        }
+
+        #two>#three {
+            width: 82%;
+            margin: auto;
+            box-shadow: 0 3px 10px black;
+            height: 65px;
+            border-radius: 5px;
+
+        }
+
+        #two>#four {
+            width: 82%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 70px);
+            gap: 8px 12px;
+        }
+
+        #two>#four>div {
+            box-shadow: 0 3px 10px black;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 21px;
+            cursor: pointer;
+            transition: all 0.2s ease-in;
+        }
+
+        #two>#five {
+            margin-top: 24px;
+        }
+
+        #two>#four>div:nth-child(4) {
+            background-color:black;
+            color: white;
+        }
+
+        #two>#four>div:nth-child(8) {
+            background-color: black;
+            color: white;
+        }
+
+        #two>#four>div:nth-child(12) {
+            background-color: black;
+            color: white;
+        }
+
+        #two>#four>div:nth-child(13) {
+            background-color: red;
+            color: white;
+        }
+
+        #two>#four>div:nth-child(15) {
+            background-color: black;
+            color: white;
+        }
+
+        #two>#four>div:nth-child(16) {
+            background-color: black;
+            color: white;
+        }
+
+        #three {
+            font-size: 32px;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 19px;
+        }
+
+        .operands:hover {
+            background-color: yellow;
+        }
+
+        @media all and (min-width:340px) and (max-width:450px) {
+            #one>#two {
+                width: 300px;
+            }
+
+            #one>p {
+                font-size: 27px;
+            }
+
+            #two>#four {
+                grid-template-rows: repeat(4, 50px);
+            }
+
+            #two>#four>div {
+                font-size: 17px;
+            }
+
+            #one>#two {
+                height: 410px;
+                margin-top: 12px;
+            }
+
+            #two>#three {
+                height: 59px;
+                font-size: 28px;
+            }
+        }
+
+
+        @media all and (max-width:340px) {
+            #one>#two {
+                width: 250px;
+            }
+
+            #one>p {
+                font-size: 24px;
+            }
+
+            #two>#four {
+                grid-template-rows: repeat(4, 43px);
+            }
+
+            #two>#four>div {
+                font-size: 15px;
+            }
+
+            #one>#two {
+                height: 358px;
+                margin-top: 12px;
+            }
+
+            #two>#three {
+                height: 50px;
+                font-size: 22px;
+            }
+        }
+    
+  </style>
+</head>
+<body>
+  <div id="one">
+    <p>Masai Calculator</p>
+    <div id = "two">
+    <div id="three"></div>
+    <div id="five"></div>
+    <div id="four">
+      <div class="operands">1</div>
+      <div class="operands">2</div>
+      <div class="operands">3</div>
+      <div class="opertor">+</div>
+      <div class="operands">4</div>
+      <div class="operands">5</div>
+      <div class="operands">6</div>
+      <div class="opertor">-</div>
+      <div class="operands">7</div>
+      <div class="operands">8</div>
+      <div class="operands">9</div>
+      <div class="opertor">*</div>
+      <div id="allclear">C</div>
+      <div class="operands">0</div>
+      <div id="finalvalue">=</div>
+      <div id="operator">/</div>
+    </div>
+    </div>
+  </div>
+</body>
+<script>
+  let three = document.getElementById("three");
+  let operands = document.querySelectorAll(".operands");
+  let operator = document.querySelectorAll(".operands");
+  let finalvalue = document.getElementById("finalvalue");
+  let all = "";
+
+  for (let i = 0;i<operands.length;i++){
+    operands[i].addEventListener("click", () => {
+      all = all+operands[i].innerText;
+      three.innerText = all;
+    })
+  }
+
+  
+  for (let i = 0;i<operator.length;i++){
+    operator[i].addEventListener("click", () => {
+      all = all+operatoe[i].innerText;
+      three.innerText = all;
+    })
+  }
+
+  let allclear = document.getElementById("allclear");
+  allclear.addEventListener("click",() =>{
+    all = "";
+    three.innerText = all;
+  })
+
+  finalvalue.addEventListener ("click", () => {
+    letbequal = eval(all);
+    if ((answer %1) = 0) {
+      three.innerText= answer;
+    }
+    else{
+      three.innerText = answer.toFixed(5);
+    }
+  })
+</script>
+</html>
