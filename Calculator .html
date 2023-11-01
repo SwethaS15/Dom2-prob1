@@ -25,7 +25,7 @@
             font-size: 50px;
             font-weight: bolder;
             font-style: italic;
-            color: #070A52
+            color: #070A52;
         }
 
         #one>#two {
@@ -116,63 +116,7 @@
             background-color: yellow;
         }
 
-        @media all and (min-width:340px) and (max-width:450px) {
-            #one>#two {
-                width: 300px;
-            }
-
-            #one>p {
-                font-size: 27px;
-            }
-
-            #two>#four {
-                grid-template-rows: repeat(4, 50px);
-            }
-
-            #two>#four>div {
-                font-size: 17px;
-            }
-
-            #one>#two {
-                height: 410px;
-                margin-top: 12px;
-            }
-
-            #two>#three {
-                height: 59px;
-                font-size: 28px;
-            }
-        }
-
-
-        @media all and (max-width:340px) {
-            #one>#two {
-                width: 250px;
-            }
-
-            #one>p {
-                font-size: 24px;
-            }
-
-            #two>#four {
-                grid-template-rows: repeat(4, 43px);
-            }
-
-            #two>#four>div {
-                font-size: 15px;
-            }
-
-            #one>#two {
-                height: 358px;
-                margin-top: 12px;
-            }
-
-            #two>#three {
-                height: 50px;
-                font-size: 22px;
-            }
-        }
-    
+       
   </style>
 </head>
 <body>
@@ -185,15 +129,15 @@
       <div class="operands">1</div>
       <div class="operands">2</div>
       <div class="operands">3</div>
-      <div class="opertor">+</div>
+      <div class="operator">+</div>
       <div class="operands">4</div>
       <div class="operands">5</div>
       <div class="operands">6</div>
-      <div class="opertor">-</div>
+      <div class="operator">-</div>
       <div class="operands">7</div>
       <div class="operands">8</div>
       <div class="operands">9</div>
-      <div class="opertor">*</div>
+      <div class="operator">*</div>
       <div id="allclear">C</div>
       <div class="operands">0</div>
       <div id="finalvalue">=</div>
@@ -205,39 +149,37 @@
 <script>
   let three = document.getElementById("three");
   let operands = document.querySelectorAll(".operands");
-  let operator = document.querySelectorAll(".operands");
+  let operator = document.querySelectorAll(".operator");
   let finalvalue = document.getElementById("finalvalue");
   let all = "";
 
-  for (let i = 0;i<operands.length;i++){
+  for (let i = 0; i < operands.length; i++) {
     operands[i].addEventListener("click", () => {
-      all = all+operands[i].innerText;
+      all = all + operands[i].innerText;
       three.innerText = all;
-    })
+    });
   }
 
-  
-  for (let i = 0;i<operator.length;i++){
+  for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener("click", () => {
-      all = all+operatoe[i].innerText;
+      all = all + operator[i].innerText;
       three.innerText = all;
-    })
+    });
   }
 
   let allclear = document.getElementById("allclear");
-  allclear.addEventListener("click",() =>{
+  allclear.addEventListener("click", () => {
     all = "";
-    three.innerText = all;
-  })
+    three.innerText = "";
+  });
 
-  finalvalue.addEventListener ("click", () => {
-    letbequal = eval(all);
-    if ((answer %1) = 0) {
-      three.innerText= answer;
-    }
-    else{
+  finalvalue.addEventListener("click", () => {
+    let answer = eval(all);
+    if (answer % 1 === 0) {
+      three.innerText = answer;
+    } else {
       three.innerText = answer.toFixed(5);
     }
-  })
+  });
 </script>
 </html>
